@@ -1,14 +1,32 @@
 <p style="color: green"><%= notice %></p>
 
+
 <h1>Lab reports</h1>
 
 <div id="lab_reports">
+<table style="width: 50%; border-collapse: separate; border-spacing: 0 10px;">
+<thead>
+  <tr>
+    <th style="padding: 5px;">User_id</th>
+    <th style="padding: 5px;">title</th>
+    <th style="padding: 5px;">description</th>
+    <th style="padding: 5px;">grade</th>
+  </tr>
+</thead>
+<tbody>
   <% @lab_reports.each do |lab_report| %>
-    <%= render lab_report %>
-    <p>
-      <%= link_to "Show this lab report", lab_report %>
-    </p>
+    <tr>
+      <td style="padding: 5px;"><%= lab_report.user_id %></td>
+      <td style="padding: 5px;text-align: center;"><%= lab_report.title %></td>
+      <td style="padding: 5px;"><%= lab_report.description %></td>
+      <td style="padding: 5px;text-align: center;"><%= lab_report.grade %></td>
+      <td style="padding: 5px;">
+        <%= button_to "Show this lab_report", lab_report, method: :get %>
+      </td>
+    </tr>
   <% end %>
+</tbody>
+</table>
 </div>
 
-<%= link_to "New lab report", new_lab_report_path %>
+<%= button_to "New lab_report", new_lab_report_path, method: :get %>

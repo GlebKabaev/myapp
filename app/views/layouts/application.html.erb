@@ -2,7 +2,7 @@
 <html>
   <head>
     <title>Myapp</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -11,9 +11,35 @@
   </head>
 
   <body>
-  <% if admin_signed_in? %>
-    <%= button_to 'Logout', destroy_admin_session_path, method: :delete %>
-  <% end %>
+    <table style="width: 50%; border-collapse: separate; border-spacing: 0 10px;">
+      
+      <tbody>
+      <% if admin_signed_in? %>
+        <tr>
+          <td>
+            <%= button_to "Users", users_path, method: :get, data: { turbo: false } %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <%= button_to "Lab_reports", lab_reports_path, method: :get, data: { turbo: false } %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <%= button_to "Home", root_path, method: :get, data: { turbo: false } %>
+          </td>
+        </tr>
+        
+          <tr>
+            <td>
+              <%= button_to 'Logout', destroy_admin_session_path, method: :delete, data: { turbo: false } %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
     <%= yield %>
   </body>
 </html>

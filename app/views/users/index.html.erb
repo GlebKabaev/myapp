@@ -1,14 +1,32 @@
 <p style="color: green"><%= notice %></p>
 
+
+
 <h1>Users</h1>
 
 <div id="users">
+<table style="width: 50%; border-collapse: separate; border-spacing: 0 10px;">
+<thead>
+  <tr>
+    <th style="padding: 5px;">First Name</th>
+    <th style="padding: 5px;">Last Name</th>
+    <th style="padding: 5px;">Email</th>
+    <th style="padding: 5px;">Actions</th>
+  </tr>
+</thead>
+<tbody>
   <% @users.each do |user| %>
-    <%= render user %>
-    <p>
-      <%= link_to "Show this user", user %>
-    </p>
+    <tr>
+      <td style="padding: 5px;"><%= user.first_name %></td>
+      <td style="padding: 5x;"><%= user.last_name %></td>
+      <td style="padding: 5px;"><%= user.email %></td>
+      <td style="padding: 5px;">
+        <%= button_to "Show this user", user, method: :get %>
+      </td>
+    </tr>
   <% end %>
+</tbody>
+</table>
 </div>
 
-<%= link_to "New user", new_user_path %>
+<%= button_to "New user", new_user_path, method: :get %>
